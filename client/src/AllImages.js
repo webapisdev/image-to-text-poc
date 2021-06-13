@@ -8,7 +8,7 @@ export default function AllImages() {
 
   useEffect(() => {
     async function fetchApi() {
-      var response = await fetch("/api/GetImages");
+      var response = await fetch("http://localhost:7071/api/GetImages");
       response = await response.json();
       setImagesWithText(response);
     }

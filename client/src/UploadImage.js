@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Grid from "@material-ui/core/Grid";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from '@material-ui/icons/Add';
 import { makeStyles } from '@material-ui/styles';
 import ImageTextCard from './ImageTextCard';
 import { Container } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -75,14 +76,12 @@ const useStyles = makeStyles((theme) => ({
 export default function UploadImage() {
     const classes = useStyles();
 
-    const [selectedImage, setSelectedImage] = useState("");
     const [imageToText, setImageToText] = useState({});
 
-
+    const [unsuportedMediaErrorMessage, setUnsuportedMediaErrorMessage] = useState('');
 
     function handleUpload2(event) {
-        setSelectedImage(event.target.files[0]);
-
+        setUnsuportedMediaErrorMessage("");
         var formdata = new FormData();
         formdata.append("File", event.target.files[0], event.target.files[0].name);
 
@@ -92,10 +91,10 @@ export default function UploadImage() {
             redirect: 'follow'
         };
 
-        fetch("/api/UploadImage", requestOptions)
+        fetch("http://localhost:7071/api/UploadImage", requestOptions)
             .then(response => response.text())
-            .then(result => console.log(setImageToText(JSON.parse(result))))
-            .catch(error => console.log('error', error));
+            .then(result => setImageToText(JSON.parse(result)))
+            .catch(error => setUnsuportedMediaErrorMessage("Unsupported Media Type. Only images are supported at this time"));
     }
     return (
         <div>
@@ -118,10 +117,14 @@ export default function UploadImage() {
                     </Fab>
                 </label>
 
-                <Container>
+                {!unsuportedMediaErrorMessage ? <Container>
                     {Object.keys(imageToText).length > 0 &&
                         <ImageTextCard imageUrl={imageToText.Url} imageText={imageToText.Text} />}
-                </Container>
+                </Container> : ""}
+
+                {unsuportedMediaErrorMessage ? <Typography variant="h6" gutterBottom color="primary">
+                    {unsuportedMediaErrorMessage}
+                </Typography> : ""}
 
             </Grid>
         </div>

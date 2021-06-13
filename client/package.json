@@ -19,7 +19,8 @@
     "@material-ui/lab": "next",
     "@material-ui/styles": "next",
     "@emotion/react": "latest",
-    "@emotion/styled": "latest"
+    "@emotion/styled": "latest",
+    "file-saver": "2.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

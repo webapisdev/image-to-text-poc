@@ -41,8 +41,8 @@ const useStyles = makeStyles((theme) => {
         },
         appbar: {
             width: `calc(100% - ${drawerWidth}px)`,
-            backgroundColor: "#fff",
-            color: "#797979",
+            backgroundColor: "#000",
+            color: "#000",
             paddingLeft: drawerWidth
         },
         toolbar: theme.mixins.toolbar,
@@ -57,12 +57,12 @@ export default function Layout({ children }) {
     const menuItems = [
         {
             text: "Upload New Image",
-            icon: <SubjectOutlined color="secondary" />,
+            icon: <SubjectOutlined color="primary" />,
             path: "/uploadimage",
         },
         {
             text: "All Images",
-            icon: <SubjectOutlined color="secondary" />,
+            icon: <SubjectOutlined color="primary" />,
             path: "/getImages",
         }
 
@@ -73,9 +73,9 @@ export default function Layout({ children }) {
         <div className={classes.root}>
             {/*app bar*/}
             <AppBar className={classes.appbar}>
-                <Toolbar>
-                    <Typography variant="h6">
-                        Text to Image app using Azure Static App, Functions, Cognitive API, and Blob storage.
+                <Toolbar style={{ backgroundColor: "#ededed" }}>
+                    <Typography variant="h6" style={{ color: "#000", fontWeight: 'bold' }}>
+                        Text to Image app using Azure Static App, Functions, Cognitive API, and Blob storage
                     </Typography>
                 </Toolbar>
             </AppBar>

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import Layout from "./Layout";
 import AllImages from "./AllImages";
@@ -7,10 +7,10 @@ import UploadImage from "./UploadImage";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#1a475f",
+      main: "#da291c",
     },
     secondary: {
-      main: "#f0bd1b",
+      main: "#000",
     },
   },
   typography: {
