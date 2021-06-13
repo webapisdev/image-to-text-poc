@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import ImageTextCard from './ImageTextCard';
+import React, { useState, useEffect } from "react";
+import ImageTextCard from "./ImageTextCard";
 import Grid from "@material-ui/core/Grid";
 import { Container } from "@material-ui/core";
 
@@ -8,7 +8,7 @@ export default function AllImages() {
 
   useEffect(() => {
     async function fetchApi() {
-      var response = await fetch("http://localhost:7071/api/GetImages");
+      var response = await fetch("/api/GetImages");
       response = await response.json();
       setImagesWithText(response);
     }
@@ -18,16 +18,20 @@ export default function AllImages() {
   return (
     <>
       {
-        <Container >
+        <Container>
           <Grid container spacing={6}>
             {imagesWithText.map((imagesWithText) => (
               <Grid
                 key={imagesWithText.ImageUrl}
-                xs={12} sm={6}
+                xs={12}
+                sm={6}
                 item
-                style={{ minHeight: '100px' }}
+                style={{ minHeight: "100px" }}
               >
-                <ImageTextCard imageUrl={imagesWithText.ImageUrl} imageText={imagesWithText.Text} />
+                <ImageTextCard
+                  imageUrl={imagesWithText.ImageUrl}
+                  imageText={imagesWithText.Text}
+                />
               </Grid>
             ))}
           </Grid>
