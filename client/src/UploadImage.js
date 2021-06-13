@@ -92,7 +92,7 @@ export default function UploadImage() {
             redirect: 'follow'
         };
 
-        fetch("http://localhost:7071/api/UploadImage", requestOptions)
+        fetch("/api/UploadImage", requestOptions)
             .then(response => response.text())
             .then(result => console.log(setImageToText(JSON.parse(result))))
             .catch(error => console.log('error', error));

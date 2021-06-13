@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import ImageTextCard from './ImageTextCard';
 import Grid from "@material-ui/core/Grid";
-import { Container, Typography } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 
 export default function AllImages() {
   const [imagesWithText, setImagesWithText] = useState([]);
 
   useEffect(() => {
     async function fetchApi() {
-      var response = await fetch("http://localhost:7071/api/GetImages");
+      var response = await fetch("/api/GetImages");
       response = await response.json();
       setImagesWithText(response);
     }
