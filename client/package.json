@@ -20,7 +20,8 @@
     "@material-ui/styles": "next",
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
-    "file-saver": "2.0.2"
+    "file-saver": "2.0.2",
+    "clsx": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

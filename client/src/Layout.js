@@ -13,6 +13,9 @@ import { SubjectOutlined } from "@material-ui/icons";
 import { useHistory, useLocation } from "react-router-dom";
 
 import { AppBar, Toolbar } from "@material-ui/core";
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import clsx from 'clsx';
 
 
 const drawerWidth = 200;
@@ -45,7 +48,14 @@ const useStyles = makeStyles((theme) => {
             color: "#000",
             paddingLeft: drawerWidth
         },
+
         toolbar: theme.mixins.toolbar,
+        menuButton: {
+            marginRight: 36,
+        },
+        hide: {
+            display: 'none',
+        },
     };
 });
 
