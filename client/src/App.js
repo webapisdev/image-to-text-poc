@@ -1,22 +1,46 @@
-import './App.css';
-import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { createTheme, ThemeProvider } from "@material-ui/core";
+import Layout from "./Layout";
+import AllImages from "./AllImages";
+import UploadImage from "./UploadImage";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#1a475f",
+    },
+    secondary: {
+      main: "#f0bd1b",
+    },
+  },
+  typography: {
+    fontFamily: '"Mulish","Roboto", "Helvetica", "Arial", sans-serif',
+    fontSize: 12,
+  },
+});
+
 
 function App() {
-
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:7071/api/HttpTrigger")
-      .then(response => { return response.json() })
-      .then(data => setProducts(data));
-  }, [products])
-
   return (
-    <div>
-      {products.map(product => (<>
-        <p>{product.Name}</p>
-      </>))}
-    </div>
+    <>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <Layout>
+            <Switch>
+              <Route exact path="/">
+                <AllImages />
+              </Route>
+              <Route path="/getImages">
+                <AllImages />
+              </Route>
+              <Route path="/uploadimage">
+                <UploadImage />
+              </Route>
+            </Switch>
+          </Layout>
+        </Router>
+      </ThemeProvider>
+    </>
   );
 }
 
