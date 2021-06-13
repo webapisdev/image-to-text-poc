@@ -32,7 +32,7 @@ namespace DCP.POC
                 {
 
                     string storageConnectionString = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONNECTION_STRING");
-                    string containerName = Environment.GetEnvironmentVariable("CONTAINER_NAME");
+                    string containerName = Environment.GetEnvironmentVariable("AZURE_CONTAINER_NAME");
 
                     string computerVisionConnectionString = Environment.GetEnvironmentVariable("AZURE_COMPUTER_VISION_CONNECTION_STRING");
                     string computerVisionEndpoint = Environment.GetEnvironmentVariable("AZURE_COMPUTER_VISION_ENDPOINT");
